@@ -212,7 +212,7 @@ DEP_RSC_WINEX=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\EXAMPLE.C
+SOURCE=".\..\EXAMPLE.C"
 DEP_CPP_EXAMP=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -228,7 +228,7 @@ DEP_CPP_EXAMP=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\UTILS.C
+SOURCE=".\..\UTILS.C"
 DEP_CPP_UTILS=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -244,7 +244,7 @@ DEP_CPP_UTILS=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\WINMAIN.C
+SOURCE=".\..\WINMAIN.C"
 DEP_CPP_WINMA=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -260,7 +260,7 @@ DEP_CPP_WINMA=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Lib\Win95\Msvc\S3dtkw.lib
+SOURCE=".\..\..\Lib\Win95\Msvc\S3dtkw.lib"
 
 !IF  "$(CFG)" == "Fan - Win32 Release"
 

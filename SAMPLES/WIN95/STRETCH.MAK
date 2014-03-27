@@ -14,12 +14,12 @@ CFG=stretch - Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE on this makefile
 !MESSAGE by defining the macro CFG on the command line.  For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "stretch.mak" CFG="stretch - Win32 Debug"
+!MESSAGE NMAKE /f "stretch.mak" CFG="Stretch - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "stretch - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "stretch - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "Stretch - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "Stretch - Win32 Debug" (based on "Win32 (x86) Application")
 !MESSAGE 
 !ERROR An invalid configuration is specified.
 !ENDIF 
@@ -36,7 +36,7 @@ MTL=mktyplib.exe
 RSC=rc.exe
 CPP=cl.exe
 
-!IF  "$(CFG)" == "stretch - Win32 Release"
+!IF  "$(CFG)" == "Stretch - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -99,7 +99,7 @@ LINK32_OBJS= \
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
 
-!ELSEIF  "$(CFG)" == "stretch - Win32 Debug"
+!ELSEIF  "$(CFG)" == "Stretch - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -193,21 +193,21 @@ LINK32_OBJS= \
 # Name "stretch - Win32 Release"
 # Name "stretch - Win32 Debug"
 
-!IF  "$(CFG)" == "stretch - Win32 Release"
+!IF  "$(CFG)" == "Stretch - Win32 Release"
 
-!ELSEIF  "$(CFG)" == "stretch - Win32 Debug"
+!ELSEIF  "$(CFG)" == "Stretch - Win32 Debug"
 
 !ENDIF 
 
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Examples\Utils.c
+SOURCE=".\..\Utils.c"
 DEP_CPP_UTILS=\
 	".\..\utils.h"\
 	".\..\S3TYPE.H"\
 	{$(INCLUDE)}"\ddraw.h"\
-	".\..\..\h\..\\h\\S3DTK.H"\
+	".\..\..\H\S3DTK.H"\
 	
 
 "$(INTDIR)\Utils.obj" : $(SOURCE) $(DEP_CPP_UTILS) "$(INTDIR)"
@@ -218,12 +218,12 @@ DEP_CPP_UTILS=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Examples\stretch.c
+SOURCE=".\..\stretch.c"
 DEP_CPP_STRET=\
 	".\..\utils.h"\
 	".\..\S3TYPE.H"\
 	{$(INCLUDE)}"\ddraw.h"\
-	".\..\..\h\..\\h\\S3DTK.H"\
+	".\..\..\H\S3DTK.H"\
 	
 
 "$(INTDIR)\stretch.obj" : $(SOURCE) $(DEP_CPP_STRET) "$(INTDIR)"
@@ -234,12 +234,12 @@ DEP_CPP_STRET=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Examples\winmain.c
+SOURCE=".\..\winmain.c"
 DEP_CPP_WINMA=\
 	".\..\utils.h"\
 	".\..\S3TYPE.H"\
 	{$(INCLUDE)}"\ddraw.h"\
-	".\..\..\h\..\\h\\S3DTK.H"\
+	".\..\..\H\S3DTK.H"\
 	
 
 "$(INTDIR)\winmain.obj" : $(SOURCE) $(DEP_CPP_WINMA) "$(INTDIR)"
@@ -250,7 +250,7 @@ DEP_CPP_WINMA=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Lib\Win95\Msvc\S3dtkw.lib
+SOURCE=".\..\..\Lib\Win95\Msvc\S3dtkw.lib"
 
 !IF  "$(CFG)" == "stretch - Win32 Release"
 

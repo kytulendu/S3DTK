@@ -200,7 +200,7 @@ LINK32_OBJS= \
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\UTILS.C
+SOURCE=".\..\UTILS.C"
 DEP_CPP_UTILS=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -216,7 +216,7 @@ DEP_CPP_UTILS=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\WINMAIN.C
+SOURCE=".\..\WINMAIN.C"
 DEP_CPP_WINMA=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -232,7 +232,7 @@ DEP_CPP_WINMA=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\TOOLKIT\EXAMPLES\SHOWTEXT.C
+SOURCE=".\..\SHOWTEXT.C"
 DEP_CPP_SHOWT=\
 	".\..\UTILS.H"\
 	".\..\S3TYPE.H"\
@@ -261,7 +261,7 @@ DEP_RSC_SHOWTE=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\toolkit\Lib\Win95\Msvc\S3dtkw.lib
+SOURCE=".\..\..\Lib\Win95\Msvc\S3dtkw.lib"
 
 !IF  "$(CFG)" == "Showtext - Win32 Release"
 
