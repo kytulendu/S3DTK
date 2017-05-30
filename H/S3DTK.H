@@ -57,14 +57,12 @@ extern "C" {
    Definitions and macros
 \************************************************************************************/
 
-/*
 #ifdef  __DOS__
   // Set structure packing on long word boundaries
   #define DllExport     ULONG
 #else
   #define DllExport     __declspec(dllexport) ULONG _cdecl
 #endif
-*/
 
 #define S3DTKVALUE  float
 #define S3DTK_TRUE  1
@@ -349,8 +347,7 @@ typedef struct {
 						/* FORMATS below */
   ULONG reserved[ 5 ];	/* DO not use */
 
-} S3DTK_SURFACE, FAR * S3DTK_LPSURFACE;
-/*} S3DTK_SURFACE, * S3DTK_LPSURFACE;*/
+} S3DTK_SURFACE, * S3DTK_LPSURFACE;
 
 /*** SUPPORTED SURFACE FORMATS
 ***/
@@ -372,14 +369,13 @@ typedef struct {
   long int right;
   long int bottom;
 
-} S3DTK_RECTAREA, FAR * S3DTK_LPRECTAREA;
-/*} S3DTK_RECTAREA, * S3DTK_LPRECTAREA;*/
+} S3DTK_RECTAREA, * S3DTK_LPRECTAREA;
 
 #else
 
 typedef RECT S3DTK_RECTAREA;
 
-typedef S3DTK_RECTAREA FAR *  S3DTK_LPRECTAREA;
+typedef S3DTK_RECTAREA * S3DTK_LPRECTAREA;
 #endif
 
 /*** S3DTK_VERTEX_LIT
@@ -396,8 +392,7 @@ typedef struct _s3dtk_vertex_lit
   BYTE        R;
   BYTE        A;
 
-} S3DTK_VERTEX_LIT, FAR * S3DTK_LPVERTEX_LIT;
-/*} S3DTK_VERTEX_LIT, * S3DTK_LPVERTEX_LIT;*/
+} S3DTK_VERTEX_LIT, * S3DTK_LPVERTEX_LIT;
 
 /*** S3DTK_VERTEX_TEX
 ***/
@@ -415,8 +410,7 @@ typedef struct _s3dtk_vertex_tex {
   S3DTKVALUE U;
   S3DTKVALUE V;
 
-} S3DTK_VERTEX_TEX, FAR * S3DTK_LPVERTEX_TEX;
-/*} S3DTK_VERTEX_TEX, * S3DTK_LPVERTEX_TEX;*/
+} S3DTK_VERTEX_TEX, * S3DTK_LPVERTEX_TEX;
 
 /************************************************************************************\
    Function prototypes
@@ -432,7 +426,6 @@ typedef struct _s3dtk_vertex_tex {
 
 /*** S3DTK FUNCTIONS LIST
 ***/
-/*typedef struct _s3dtk_function_list *S3DTK_LPFUNCTIONLIST;*/
 typedef struct _s3dtk_function_list
 {
 
@@ -441,10 +434,8 @@ typedef struct _s3dtk_function_list
   ***/
 
   /* Set 3D engine states */
-  /*ULONG (* S3DTK_SetState)(S3DTK_LPFUNCTIONLIST pFuncStruct,
-                           ULONG state, ULONG value);*/
-  ULONG (* S3DTK_SetState)(void * pFuncStruct,
-                           ULONG State, ULONG Value);
+  ULONG (* S3DTK_SetState)(void *pFuncStruct,
+                           ULONG state, ULONG value);
   /* Function updates the state of 3D engine. The updated state
   // will take effect from the next primitive being rendered
   //
@@ -459,10 +450,8 @@ typedef struct _s3dtk_function_list
   */
 
   /* Get 3D engine states */
-  /*ULONG (* S3DTK_GetState)(S3DTK_LPFUNCTIONLIST pFuncStruct,
-                           ULONG state, void *value);*/
-  ULONG (* S3DTK_GetState)(void * pFuncStruct,
-                           ULONG State, ULONG Value);
+  ULONG (* S3DTK_GetState)(void *pFuncStruct,
+						   ULONG state, ULONG value);
   /* Function returns the current state of the 3D engine.
   //
   // Params:
@@ -478,12 +467,9 @@ typedef struct _s3dtk_function_list
   ***/
 
   /* Render primitives (triangles/lines) */
-  /*ULONG (* S3DTK_TriangleSet)(S3DTK_LPFUNCTIONLIST pFuncStruct,
-                              void **ppVertexSet,
-                              ULONG NumVertices, ULONG SetType);*/
-  ULONG (* S3DTK_TriangleSet)(void * pFuncStruct,
-                              ULONG FAR * pVertexSet,
-                              ULONG NumVertexes, ULONG SetType);
+  ULONG (* S3DTK_TriangleSet)(void *pFuncStruct,
+							  ULONG *pVertexSet,
+                              ULONG NumVertices, ULONG SetType);
   /* This call causes the S3D engine to render the specified type
   // of primitives.
   //
@@ -496,14 +482,10 @@ typedef struct _s3dtk_function_list
   */
 
   /* Render primitives (triangles/lines), extended call */
-  /*ULONG (* S3DTK_TriangleSetEx)(S3DTK_LPFUNCTIONLIST pFuncStruct,
-                                void **pVertexSet, ULONG NumVertices,
+  ULONG (* S3DTK_TriangleSetEx)(void *pFuncStruct,
+								ULONG *pVertexSet, ULONG NumVertices,
                                 ULONG SetType,
-                                ULONG *pSetState, ULONG NumStates);*/
-  ULONG (* S3DTK_TriangleSetEx)(void * pFuncStruct,
-                                ULONG FAR * pVertexSet, ULONG NumVertexes,
-                                ULONG SetType,
-								ULONG FAR * pSetState, ULONG NumStates);
+                                ULONG *pSetState, ULONG NumStates);
   /* like S3DTK_TriangleSet, but sets S3D engine to specified state
   // before rendering primitives
   //
@@ -523,8 +505,7 @@ typedef struct _s3dtk_function_list
   ***/
 
   /* Copy a rect area inside video memory */
-  /*ULONG (* S3DTK_BitBlt)(S3DTK_LPFUNCTIONLIST pFuncStruct,*/
-  ULONG (* S3DTK_BitBlt)(void * pFuncStruct,
+  ULONG (* S3DTK_BitBlt)(void *pFuncStruct,
                          S3DTK_LPSURFACE pDestSurface,
                          S3DTK_LPRECTAREA pDestRect,
                          S3DTK_LPSURFACE pSrcSurface,
@@ -542,8 +523,7 @@ typedef struct _s3dtk_function_list
   */
 
   /* copy a rect area inside video memory with screen door transparency */
-  /*ULONG (* S3DTK_BitBltTransparent)(S3DTK_LPFUNCTIONLIST pFuncStruct,*/
-  ULONG (* S3DTK_BitBltTransparent)(void  * pFuncStruct,
+  ULONG (* S3DTK_BitBltTransparent)(void *pFuncStruct,
                                     S3DTK_LPSURFACE pDestSurface,
                                     S3DTK_LPRECTAREA pDestRect,
                                     S3DTK_LPSURFACE pSrcSurface,
@@ -566,8 +546,7 @@ typedef struct _s3dtk_function_list
   */
 
   /* fill a rect area in video memory with color */
-  /*ULONG (* S3DTK_RectFill)(S3DTK_LPFUNCTIONLIST pFuncStruct,*/
-  ULONG (* S3DTK_RectFill)(void * pFuncStruct,
+  ULONG (* S3DTK_RectFill)(void *pFuncStruct,
                            S3DTK_LPSURFACE pDestSurface,
                            S3DTK_LPRECTAREA pDestRect,
                            ULONG FillColor);
@@ -588,8 +567,7 @@ typedef struct _s3dtk_function_list
   ****/
 
   /* return lats error occurred inside toolkit library */
-  /*int (* S3DTK_GetLastError)(S3DTK_LPFUNCTIONLIST pFuncStruct);*/
-  int (* S3DTK_GetLastError)(void * pFuncStruct );
+  int (* S3DTK_GetLastError)(void *pFuncStruct);
 
   /* This function returns the code of the last error if it
   // is called immediately after the function that returned S3DTK_ERR.
@@ -603,8 +581,7 @@ typedef struct _s3dtk_function_list
   **** ------------------------------------------
   ****/
 
-  /*ULONG (* S3DTK_StretchDisplaySurface)(S3DTK_LPFUNCTIONLIST pFuncStruct,*/
-  ULONG (* S3DTK_StretchDisplaySurface)(void * pFuncStruct,
+  ULONG (* S3DTK_StretchDisplaySurface)(void *pFuncStruct,
                                         ULONG width0, ULONG height0,
                                         ULONG width1, ULONG height1);
   /* Stretch the surface pointed by pDisplaySurface to width by height.
@@ -619,13 +596,11 @@ typedef struct _s3dtk_function_list
   */
 #endif  /* not for WIN32 */
 
-/*} S3DTK_FUNCTIONLIST;*/
 } S3DTK_FUNCTIONLIST, * S3DTK_LPFUNCTIONLIST;
 
 /*** S3DTK_PhysicalToLinear
 ***/
-/*DllExport S3DTK_PhysicalToLinear(ULONG PhysAddr, ULONG Size);*/
-extern ULONG S3DTK_PhysicalToLinear(ULONG PhysAddr, ULONG Size);
+DllExport S3DTK_PhysicalToLinear(ULONG PhysAddr, ULONG Size);
 /* Maps given physical address and the size of the physical
 // memory area to linear address.
 // Caution: In a multi-threading environment linear address is valid
@@ -641,8 +616,7 @@ extern ULONG S3DTK_PhysicalToLinear(ULONG PhysAddr, ULONG Size);
 
 /*** S3DTK_LinearToPhysical
 ***/
-/*DllExport S3DTK_LinearToPhysical(ULONG Linear);*/
-extern ULONG S3DTK_LinearToPhysical(ULONG Linear);
+DllExport S3DTK_LinearToPhysical(ULONG Linear);
 /* Finds a physical address being mapped on the given linear
 // address.
 //
@@ -654,8 +628,7 @@ extern ULONG S3DTK_LinearToPhysical(ULONG Linear);
 
 /*** S3DTK_EnterCritical
 ***/
-/*DllExport S3DTK_EnterCritical(void);*/
-extern ULONG S3DTK_EnterCritical(void);
+DllExport S3DTK_EnterCritical(void);
 /* Serializes access to shared resources in WIN95 multi-thread
 // environment.
 // Function is for serializing an access to S3 2D/3D engine
@@ -671,8 +644,7 @@ extern ULONG S3DTK_EnterCritical(void);
 
 /*** S3DTK_ReleaseCritical
 ***/
-/*DllExport S3DTK_ReleaseCritical(void);*/
-extern ULONG S3DTK_ReleaseCritical(void);
+DllExport S3DTK_ReleaseCritical(void);
 /* Releases the critical section owned by the thread that issued
 // S3DTK_EnterCritical
 //
@@ -682,8 +654,7 @@ extern ULONG S3DTK_ReleaseCritical(void);
 
 /*** S3DTK_InitLib
 ***/
-/*DllExport S3DTK_InitLib(S3DTK_LPLIB_INIT pInit);*/
-extern ULONG S3DTK_InitLib(ULONG lParam);
+DllExport S3DTK_InitLib(S3DTK_LPLIB_INIT pInit);
 /* Init 2D/3D engine and Toolkit lobrary.
 // This function initializes the Toolkit library. Must be called
 // before using any other function of this toolkit.
@@ -698,8 +669,7 @@ extern ULONG S3DTK_InitLib(ULONG lParam);
 
 /*** S3DTK_ExitLib
 ***/
-/*DllExport S3DTK_ExitLib(void);*/
-extern ULONG S3DTK_ExitLib(void);
+DllExport S3DTK_ExitLib(void);
 /* Clean up. Must be called before exiting the App.
 //
 // Return:
@@ -708,10 +678,8 @@ extern ULONG S3DTK_ExitLib(void);
 
 /*** S3DTK_CreateRenderer
 ***/
-/*DllExport S3DTK_CreateRenderer(S3DTK_LPRENDERER_INITSTRUCT pInit,
-                               S3DTK_LPFUNCTIONLIST *ppFunctionList);*/
-extern ULONG S3DTK_CreateRenderer(ULONG Param1,
-                                  void * * ppFunctionList);
+DllExport S3DTK_CreateRenderer(S3DTK_LPRENDERER_INITSTRUCT pInit,
+                               S3DTK_LPFUNCTIONLIST *ppFunctionList);
 /* This function creates a new instance of the rendering device and returns
 // a pointer to the list of S3DTK interface functions.
 //
@@ -727,8 +695,7 @@ extern ULONG S3DTK_CreateRenderer(ULONG Param1,
 
 /*** S3DTK_DestroyRenderer
 ***/
-/*DllExport S3DTK_DestroyRenderer(S3DTK_LPFUNCTIONLIST *ppFunctionList);*/
-extern ULONG S3DTK_DestroyRenderer(void * * ppFunctionList);
+DllExport S3DTK_DestroyRenderer(S3DTK_LPFUNCTIONLIST *ppFunctionList);
 /* Destroys the given instance of the rendering device.
 // Note: After this call ppFunctionList is invalid!
 //
