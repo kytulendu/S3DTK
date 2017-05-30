@@ -141,7 +141,8 @@ BOOL allocSurf(S3DTK_SURFACE *surf, ULONG width, ULONG height, ULONG bpp, ULONG 
     surf->sfFormat = format;                        /* surface's format                        */
     if (format & S3DTK_SYSTEM)
      {  /* allocate surface in system memory */
-        if ((surf->sfOffset = (ULONG)malloc(bufsize)) == NULL)
+        /*if ((surf->sfOffset = (ULONG)malloc(bufsize)) == NULL)*/
+        if ((surf->sfOffset = (ULONG)malloc(bufsize)) == 0)
          {
             printf("error : Allocating system memory of %dx%dx%d\n", 
                             (int)width, (int)height, (int)bpp);

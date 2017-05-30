@@ -491,7 +491,7 @@ BOOL doInit(void)
         return(initFail());
 #endif
     S3DTK_InitLib(S3DTK_INITPIO);
-    S3DTK_CreateRenderer(0, (void * *)&pS3DTK_Funct);
+    S3DTK_CreateRenderer(0, (S3DTK_LPFUNCTIONLIST*)&pS3DTK_Funct);
     initScreen();
     if (!initMemoryBuffer())
         return(initFail());
@@ -503,7 +503,7 @@ void cleanUp(void)
 {
     cleanupMemoryBuffer();
     restoreScreen();
-    S3DTK_DestroyRenderer((void * *)&pS3DTK_Funct);
+    S3DTK_DestroyRenderer((S3DTK_LPFUNCTIONLIST*)&pS3DTK_Funct);
     S3DTK_ExitLib();
 #ifdef  USEDIRECTDRAW
     exitDirectDraw();
